@@ -1,0 +1,181 @@
+/*-----------------------------------------A---------------------------------------------*/
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 1000000000 // 10^9
+#define ll long long int
+#define mod 1000000007
+#define pb push_back
+#define pairi pair<ll,ll>
+#define mapair map<pairi,int>
+#define mapchar map<char,int>
+#define mapint map<int,int>
+#define vpair vector<pairi>
+#define vst vector<string>
+#define vint vector<int>
+#define vlint vector<ll>
+#define vvint vector<vector<int>>
+#define okay(x) cout<<"here at line "<<x<<endl;
+#define loop(i,l,r) for(int i=l;i<r;i++)
+#define fir first
+#define sec second
+#define debug(lineno,x) cout<<"line number, "<<lineno<<" ans= "<<x<<endl;
+
+int main(){
+    int t;
+	cin>>t;
+	while(t--){
+		ll x,y,n;
+        cin>>x>>y>>n;
+        int k=n%x;
+        ll res=n/x;
+        res=res*x;
+        res+=y;
+        if(res>n){
+            res=res-x;
+        }
+        cout<<res<<endl;
+	}
+}
+/*-----------------------------------------B---------------------------------------------*/
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 1000000000 // 10^9
+#define ll long long int
+#define mod 1000000007
+#define pb push_back
+#define pairi pair<ll,ll>
+#define mapair map<pairi,int>
+#define mapchar map<char,int>
+#define mapint map<int,int>
+#define vpair vector<pairi>
+#define vst vector<string>
+#define vint vector<int>
+#define vlint vector<ll>
+#define vvint vector<vector<int>>
+#define okay(x) cout<<"here at line "<<x<<endl;
+#define loop(i,l,r) for(int i=l;i<r;i++)
+#define fir first
+#define sec second
+#define debug(lineno,x) cout<<"line number, "<<lineno<<" ans= "<<x<<endl;
+
+int main(){
+    int t;
+	cin>>t;
+	while(t--){
+		ll n;
+        cin>>n;
+        int count=0;
+        while(n%6==0){
+            n/=6;
+            count++;
+        }
+        while(n%3==0){
+            count+=2;
+            n/=3;
+        }
+        if(n==1){
+            cout<<count<<endl;
+        }else{
+            cout<<-1<<endl;
+        }
+	}
+}
+/*-----------------------------------------C---------------------------------------------*/
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 1000000000 // 10^9
+#define ll long long int
+#define mod 1000000007
+#define pb push_back
+#define pairi pair<ll,ll>
+#define mapair map<pairi,int>
+#define mapchar map<char,int>
+#define mapint map<int,int>
+#define vpair vector<pairi>
+#define vst vector<string>
+#define vint vector<int>
+#define vlint vector<ll>
+#define vvint vector<vector<int>>
+#define okay(x) cout<<"here at line "<<x<<endl;
+#define loop(i,l,r) for(int i=l;i<r;i++)
+#define fir first
+#define sec second
+#define debug(lineno,x) cout<<"line number, "<<lineno<<" ans= "<<x<<endl;
+
+int main(){
+    int t;
+	cin>>t;
+	while(t--){
+		int n;
+        cin>>n;
+        string s;
+        cin>>s;
+        int open=0,close=0; int ans=0;
+        loop(i,0,n){
+            if(s[i]=='('){
+                open++;
+            }else{
+                if(open==0){
+                    ans++;
+                }else{
+                    open--;
+                }
+            }
+        }
+        cout<<ans<<endl;
+	}
+}
+/*-----------------------------------------D---------------------------------------------*/
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 1000000000 // 10^9
+#define ll long long int
+#define mod 1000000007
+#define pb push_back
+#define pairi pair<ll,ll>
+#define mapair map<pairi,int>
+#define mapchar map<char,int>
+#define mapint map<int,int>
+#define vpair vector<pairi>
+#define vst vector<string>
+#define vint vector<int>
+#define vlint vector<ll>
+#define vvint vector<vector<int>>
+#define okay(x) cout<<"here at line "<<x<<endl;
+#define loop(i,l,r) for(int i=l;i<r;i++)
+#define fir first
+#define sec second
+#define debug(lineno,x) cout<<"line number, "<<lineno<<" ans= "<<x<<endl;
+
+int main(){
+    int t;
+	cin>>t;
+	while(t--){
+		int n,k;
+        cin>>n>>k;
+        vlint v(n,0);
+        map<ll,ll>mp; int flag=0;
+        loop(i,0,n){
+            cin>>v[i];
+            if(v[i]%k!=0){
+                ll l=k-(v[i]%k);
+                mp[l]++;
+            }
+        }
+        ll val=0,freq=1;
+        for(auto it=mp.begin();it!=mp.end();it++){
+            if(it->sec>=freq){
+                freq=it->sec;
+                val=it->fir;
+            }
+        }
+        freq--;
+        if(val==0)
+            cout<<0<<endl;
+        else{
+            ll ans=val+(freq*k)+1;
+            cout<<ans<<endl;
+        }
+	}
+}
+
