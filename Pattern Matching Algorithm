@@ -1,0 +1,77 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 1000000000 // 10^9
+#define ll long long int
+#define mod 1000000007
+#define pb push_back
+#define pairi pair<ll,ll>
+#define mapair map<pairi,int>
+#define mapchar map<char,int>
+#define mapint map<int,int>
+#define vpair vector<pairi>
+#define vst vector<string>
+#define vint vector<int>
+#define vlint vector<ll>
+#define vvint vector<vector<int>>
+#define okay(x) cout<<"here at line "<<x<<endl;
+#define loop(i,l,r) for(int i=l;i<r;i++)
+#define fir first
+#define sec second
+#define debug(lineno,x) cout<<"line number, "<<lineno<<" ans= "<<x<<endl;
+bool comp(const pairi&a,const pairi&b){
+    return a.sec>b.sec;
+}
+/* pattern search algorithm Knuth Morris Pratt */
+vint kmp_lps(string t){
+    int n=t.size();
+    vint v(n,0);
+    int j=0;
+    int i=1;
+    while(i<n){
+        if(t[i]==t[j]){
+            v[i]=j+1;
+            j++;
+            i++;
+        }else{
+            if(j!=0){
+                j=v[j-1];
+            }else{
+                v[i]=0;
+                i++;
+            }
+        }
+    }
+    return v;
+}
+vint kmp(string s,string t){
+    vint temp=kmp_lps(t);
+    int j=0;
+    int i=0;
+    vint ind;
+    while(i<s.size()){
+        if(s[i]==t[j]){
+            if(j==temp.size()-1){
+                ind.pb(i);
+                j=-1;i--;
+            }
+            i++,j++;
+        }else{
+            if(j!=0){
+             j=temp[j-1];
+            }
+            i++;
+        }
+    }
+    return ind;
+   /* indexes of matching prefixes */
+}
+/* pattern search algorithm Knuth Morris Pratt */
+
+int main(){
+    string s,t;
+    cin>>s>>t;
+    vint v=kmp(s,t);
+    loop(i,0,v.size()){
+        cout<<v[i]<<" ";
+    }cout<<'\n';
+}
